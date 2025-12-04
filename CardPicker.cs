@@ -1,0 +1,36 @@
+﻿namespace PickRandomCards
+{
+    internal class CardPicker
+    {
+        static Random random = new Random();
+
+        public static string[] PickRandomCards(int nubmerOfCards)
+        {
+            string[] pickedCards = new string[nubmerOfCards];
+            for (int i = 0; i < nubmerOfCards; i++)
+            {
+                pickedCards[i] = RandomValue() + " " + RandomSuit();
+            }
+            return pickedCards;
+        }
+
+        private static string RandomSuit()
+        {
+            int value = random.Next(1, 5);
+            if (value == 1) return "пик";
+            if (value == 2) return "червей";
+            if (value == 3) return "треф";
+            return "бубен";
+        }
+
+        private static string RandomValue()
+        {
+            int value = random.Next(1, 14);
+            if (value == 1) return "Туз";
+            if (value == 11) return "Валет";
+            if (value == 12) return "Дама";
+            if (value == 13) return "Король";
+            return value.ToString();
+        }
+    }
+}
